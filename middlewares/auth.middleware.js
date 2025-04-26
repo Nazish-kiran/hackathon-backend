@@ -7,7 +7,7 @@ dotenv.config();
 export const authUser = async (req, res, next) => {
   let token = req.cookies.token;
   if (!token) {
-    res.status(401).json("User not logged in");
+   return res.status(401).json("User not logged in");
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
