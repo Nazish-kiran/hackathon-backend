@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-app.use(cors({ origin: "https://hackathon-frontend-kohl.vercel.app/", credentials: true }));
+app.use(cors());
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
