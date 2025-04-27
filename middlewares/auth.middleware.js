@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 
-const authUser = async (req, res, next) => {
+export const authUser = async (req, res, next) => {
   let token = req.headers.authorization && req.headers.authorization.split(' ')[1];
   
   if (!token) {
