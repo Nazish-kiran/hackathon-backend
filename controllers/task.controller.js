@@ -20,3 +20,40 @@ export const getUserTask = async (req, res) => {
       res.status(500).json({ message: "Something went wrong", error: error.message });
     }
   };
+
+  export const deleteUserTask = async (req, res) => {
+    const { taskId } = req.params; // Get task ID from the URL parameter
+  
+    try {
+      const task = await taskModel.findByIdAndDelete(taskId);
+  
+      if (!task) {
+        return res.status(404).json({ message: "Task not found" });
+      }
+  
+      res.status(200).json({ message: "Task deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Something went wrong", error: error.message });
+    }
+  };
+
+  export const updateUserTask = async (req, res) => {
+    const { taskId } = req.params; // Get task ID from the URL parameter
+    const { title, description, status } = req.body;
+  
+    try {
+      const task = await taskModel.findByIdAndUpdate(
+        taskId,
+        { title, description, status },
+        { new: true } // Return the updated task
+      );
+  
+      if (!task) {
+        return res.status(404).json({ message: "Task not found" });
+      }
+  
+      res.status(200).json(task);
+    } catch (error) {
+      res.status(500).json({ message: "Something went wrong", error: error.message });
+    }
+  };

@@ -6,8 +6,12 @@ import {
   getUserProfile,
   logoutUser,
 } from "../controllers/user.controller.js";
-import { getUserTask } from "../controllers/task.controller.js";
-import {authUser} from "../middlewares/auth.middleware.js";
+import {
+  getUserTask,
+  deleteUserTask,
+  updateUserTask,
+} from "../controllers/task.controller.js";
+import { authUser } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
@@ -39,10 +43,13 @@ router.post(
   loginUser
 );
 
-router.post('/profile', authUser, getUserTask);
+router.post("/profile", authUser, getUserTask);
+
+router.delete("/profile/:taskId", authUser, deleteUserTask);
+
+router.put("/profile/:taskId", authUser, updateUserTask);
 
 router.get("/profile", authUser, getUserProfile);
 router.get("/logout", authUser, logoutUser);
-
 
 export default router;
