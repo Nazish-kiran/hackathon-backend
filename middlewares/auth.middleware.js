@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const authUser = async (req, res, next) => {
-  let token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+  let token = req.headers.authorization;
   
   if (!token) {
     return res.status(401).json("User not logged in");
