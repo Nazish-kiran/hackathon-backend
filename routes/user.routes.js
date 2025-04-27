@@ -49,7 +49,7 @@ router.delete("/profile/:taskId", deleteUserTask);
 
 router.put("/profile/:taskId",  updateUserTask);
 
-router.get("/profile", authUser, getUserProfile);
-router.get("/logout", authUser, logoutUser);
+router.get("/profile",  getUserProfile);
+router.get("/logout",  logoutUser);
 
 export default router;
