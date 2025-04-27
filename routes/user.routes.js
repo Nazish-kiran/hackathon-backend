@@ -43,13 +43,13 @@ router.post(
   loginUser
 );
 
-router.post("/profile", getUserTask);
+router.post("/profile", authUser, getUserTask);
 
-router.delete("/profile/:taskId", deleteUserTask);
+router.delete("/profile/:taskId", authUser, deleteUserTask);
 
-router.put("/profile/:taskId",  updateUserTask);
+router.put("/profile/:taskId", authUser, updateUserTask);
 
-router.get("/profile",  getUserProfile);
-router.get("/logout",  logoutUser);
+router.get("/profile", authUser, getUserProfile);
+router.get("/logout", authUser, logoutUser);
 
 export default router;
