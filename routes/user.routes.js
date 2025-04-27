@@ -43,11 +43,11 @@ router.post(
   loginUser
 );
 
-router.post("/profile", authUser, getUserTask);
+router.post("/profile", getUserTask);
 
-router.delete("/profile/:taskId", authUser, deleteUserTask);
+router.delete("/profile/:taskId", deleteUserTask);
 
-router.put("/profile/:taskId", authUser, updateUserTask);
+router.put("/profile/:taskId",  updateUserTask);
 
 router.get("/profile", authUser, getUserProfile);
 router.get("/logout", authUser, logoutUser);
