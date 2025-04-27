@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
   });
 
   const token = user.generateAuthToken();
-  res.cookie("token", token);
+ localStorage.setItem("token", token);
 
   res.status(201).json({ token, user });
 };
@@ -44,7 +44,8 @@ export const loginUser = async (req, res) => {
       res.status(401).json({ message: "incorrect email or password" });
     }
     const token = user.generateAuthToken();
-    res.cookie("token", token);
+    localStorage.setItem("token", token);
+
 
     res.status(201).json({ user, token });
   } catch (err) {
