@@ -1,5 +1,6 @@
 import userModel from "../models/user.model.js";
 import { cookie, validationResult } from "express-validator";
+import Task from "../models/task.model.js";
 
 export const registerUser = async (req, res) => {
   const { firstname, lastname, email, password, socketId } = req.body;
@@ -51,9 +52,10 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const geUserProfile = async (req, res) => {
-  res.send(req.user);
+export const getUserProfile = async (req, res) => {
+res.send("working")
 };
+
 
 export const logoutUser = async (req, res) => {
   res.clearCookie("token");

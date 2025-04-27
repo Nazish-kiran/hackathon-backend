@@ -3,9 +3,10 @@ import { body } from "express-validator";
 import {
   registerUser,
   loginUser,
-  geUserProfile,
+  getUserProfile,
   logoutUser,
 } from "../controllers/user.controller.js";
+import { getUserTask } from "../controllers/task.controller.js";
 import {authUser} from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
@@ -38,7 +39,10 @@ router.post(
   loginUser
 );
 
-router.get("/profile", authUser, geUserProfile);
+router.post('/profile', authUser, getUserTask);
+
+router.get("/profile", authUser, getUserProfile);
 router.get("/logout", authUser, logoutUser);
+
 
 export default router;
