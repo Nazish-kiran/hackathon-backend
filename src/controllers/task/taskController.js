@@ -6,11 +6,11 @@ export const createTask = asyncHandler(async (req, res) => {
     const { title, description, dueDate, priority, status } = req.body;
 
     if (!title || title.trim() === "") {
-      res.status(400).json({ message: "Title is required!" });
+      return res.status(400).json({ message: "Title is required!" });
     }
-
+    
     if (!description || description.trim() === "") {
-      res.status(400).json({ message: "Description is required!" });
+      return res.status(400).json({ message: "Description is required!" });
     }
 
     const task = new TaskModel({
@@ -24,7 +24,9 @@ export const createTask = asyncHandler(async (req, res) => {
 
     await task.save();
 
+    console.log(task);
     res.status(201).json(task);
+    
   } catch (error) {
     console.log("Error in createTask: ", error.message);
     res.status(500).json({ message: error.message });

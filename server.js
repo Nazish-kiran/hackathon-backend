@@ -14,11 +14,11 @@ const app = express();
 
 // middleware
 app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true,
-  })
-);
+    cors({
+      origin: 'http://localhost:3000', // Specify the frontend URL
+      credentials: true, // Allow credentials (cookies, HTTP authentication)
+    })
+  );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
